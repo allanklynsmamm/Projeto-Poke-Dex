@@ -88,26 +88,25 @@ function carregarpokemons(){
         imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
     }
      
-    pokemons.push(pokemon9)
+    pokemons.push(pokemon1)
 
 
      for( let index = 0 ; index < pokemons.length; index ++){
         const pokemon = pokemons[index]
         adicionarCardPokemon(pokemon) 
-
-     }
+    }
 
 
 }
     
  function adicionarCardPokemon(pokemon){
 
-      const imagemElemento = document.createElemente("img")
+      const imagemElemento = document.createElement("img")
 
       imagemElemento.setAttribute("src", pokemon.imagem)
 
-      const divElemento = documentGetElementById("conteudo-pokemon")
-
+      const divElemento = document.getElementById("conteudo-pokemon")
+      
       divElemento.appendChild(imagemElemento)
 
     }
