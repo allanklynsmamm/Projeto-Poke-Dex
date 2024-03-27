@@ -1,28 +1,31 @@
-
-
 const pokemons = []
 
+function carregarpokemons() {
 
-function carregarpokemons(){
+    const requisicaoHttp = new XMLHttpRequest()
+    requisicaoHttp.open("GET", "https://pokeapi.co/api/v2/pokemon",false)
+    requisicaoHttp.send()
 
+    const resposta = JSON.parse(requisicaoHttp.responseText)
+    const pokemons = resposta.results
 
-    const pokemon1 = {
+    /*const pokemon1 = {
 
         id: 1,
-        nome : "bulbassaur",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
+        nome: "bulbassaur",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png"
     }
-     
+
     pokemons.push(pokemon1)
 
 
     const pokemon2 = {
 
         id: 2,
-        nome : "ivysaur",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
+        nome: "ivysaur",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png"
     }
-     
+
     pokemons.push(pokemon2)
 
 
@@ -30,83 +33,87 @@ function carregarpokemons(){
     const pokemon3 = {
 
         id: 3,
-        nome : "venosaur",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
+        nome: "venosaur",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png"
     }
-     
+
     pokemons.push(pokemon3)
 
     const pokemon4 = {
 
         id: 4,
-        nome : "charmander",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
+        nome: "charmander",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/4.png"
     }
-     
+
     pokemons.push(pokemon4)
 
     const pokemon5 = {
 
         id: 5,
-        nome : "charmeleon",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
+        nome: "charmeleon",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/5.png"
     }
-     
+
     pokemons.push(pokemon5)
 
     const pokemon6 = {
 
         id: 6,
-        nome : "charizard",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
+        nome: "charizard",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png"
     }
-     
+
     pokemons.push(pokemon6)
 
     const pokemon7 = {
 
         id: 7,
-        nome : "squirtle",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
+        nome: "squirtle",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/7.png"
     }
-     
+
     pokemons.push(pokemon7)
 
     const pokemon8 = {
 
         id: 8,
-        nome : "wartortle",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
+        nome: "wartortle",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png"
     }
-     
+
     pokemons.push(pokemon8)
 
     const pokemon9 = {
 
         id: 9,
-        nome : "blastoise",
-        imagem : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
+        nome: "blastoise",
+        imagem: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/9.png"
     }
-     
-    pokemons.push(pokemon1)
+
+    pokemons.push(pokemon1)*/
 
 
-     for( let index = 0 ; index < pokemons.length; index ++){
+    for (let index = 0; index < pokemons.length; index++) {
         const pokemon = pokemons[index]
-        adicionarCardPokemon(pokemon) 
+        const id = index + 1
+        pokemon.imagem = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"+ id +".png"
+        adicionarCardPokemon(pokemon)
     }
 
 
 }
-    
- function adicionarCardPokemon(pokemon){
 
-      const imagemElemento = document.createElement("img")
+function adicionarCardPokemon(pokemon) {
 
-      imagemElemento.setAttribute("src", pokemon.imagem)
+    const imagemElemento = document.createElement("img")
+    imagemElemento.setAttribute("src", pokemon.imagem)
 
-      const divElemento = document.getElementById("conteudo-pokemon")
-      
-      divElemento.appendChild(imagemElemento)
+    const textoElemento = document.createElement("h1")
+    textoElemento.innerHTML = pokemon.name
 
-    }
+    const divElemento = document.getElementById("conteudo-pokemon")
+    divElemento.appendChild(imagemElemento)
+    divElemento.appendChild(textoElemento)
+
+}
